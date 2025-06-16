@@ -3,13 +3,27 @@
 import './index.css'
 
 const ThumbnailItem = props => {
-  const {imageDetails} = props
-  const {thumbnailUrl, thumbnailAltText} = imageDetails
+  const {imageDetails, setActiveThumbnailId, isActive} = props
+  const {id, thumbnailUrl, thumbnailAltText} = imageDetails
+
+  const thumbnailClassName = isActive? `thumbnail active` : `thumbnail`
+
+  const onClickThumbanil = () => {
+    setActiveThumbnailId(id)
+  }
 
   return (
-    <li>
-      <button type="button">
-        <img src={thumbnailUrl} alt={thumbnailAltText} />
+    <li className="thumbnail-item">
+      <button
+        type="button"
+        className='thumbnail-btn'
+        onClick={onClickThumbanil}
+      >
+        <img
+          className={thumbnailClassName}
+          src={thumbnailUrl}
+          alt={thumbnailAltText}
+        />
       </button>
     </li>
   )
